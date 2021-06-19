@@ -43,10 +43,10 @@ class Slider {
         const currentSlide = document.querySelector(
             `.slider-container_slide[data-index="${this.#currentSlideIndex}"]`
         );
-        const currentSlideHeight = currentSlide.getBoundingClientRect();
+        const currentSlideHeight = currentSlide.getBoundingClientRect().height;
 
         this.sliderContainer.style.transform = `translateY(-${
-            currentSlideHeight.height * index
+            currentSlideHeight * index
         }px)`;
 
         this.focusButton();

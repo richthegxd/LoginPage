@@ -13,6 +13,49 @@ body
     display: flex
     flex-flow: row wrap
 
+.d-none
+    display: none
+
+.d-block
+    display: block
+
+// Preloader styles
+.preloader-container
+
+    &_wrapper
+        position: fixed
+        top: 0
+        left: 0
+        height: 100vh
+        width: 100%
+        background: rgba(0, 0, 0, .7)
+        z-index: 2
+        display: flex
+        align-items: center
+        justify-content: center
+
+    &_content
+        height: 3vh
+        width: 3vh
+        animation: preloader 3s infinite
+
+        @keyframes preloader
+            0%
+                background: $Slide-f
+                transform: rotate(0)
+            25%
+                background: $Slide-s
+                transform: rotate(45deg)
+            50%
+                background: $Slide-t
+                transform: rotate(90deg)
+            75%
+                background: $Slide-fo
+                transform: rotate(135deg)
+            100%
+                background: $Slide-f
+                transform: rotate(180deg)
+
 // Notification
 .notify-container
 
@@ -46,7 +89,6 @@ body
                 z-index: 1
                 border-radius: 5px
 
-
     .alert-danger
         background: #ff5656
         border: .1vh solid #ff4040
@@ -60,7 +102,7 @@ body
     @keyframes alert
         0%
             transform: translateX(15vh)
-        50% 
+        50%
             transform: translateX(-1vh)
         100%
             transform: translateX(0)
@@ -69,14 +111,20 @@ body
 .form
     width: 50%
     background: $Dusty-Rose
+    height: 100vh
+    overflow-y: auto
 
     &_wrapper
         padding: 20px
         display: flex
         flex-flow: column
         justify-content: center
-        max-width: 460px
+        max-width: 430px
         margin: 0 auto
+    
+    &_container-placeholder
+        text-align: center
+        margin-top: 15px
 
     &_social
         display: flex
@@ -114,7 +162,7 @@ body
             background: #fff
             box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .2)
             border-radius: 10px
-            padding: 17px 15px
+            padding: 15px
             cursor: pointer
             margin-top: 15px
 
@@ -131,48 +179,74 @@ body
 
     &_container-input_block
         width: 100%
-        margin-top: 20px
+        margin-top: 15px
+
+        .row
+            display: flex
+            flex-flow: row
+            justify-content: space-between
+
+            div
+                width: 48%
+
+        .row-date
+            div
+                width: 32%
 
         fieldset
-            margin-top: 30px
+            margin-top: 20px
             width: 100%
             border: none
             display: flex
             flex-flow: column
             align-items: center
 
-            .invalid-feedback 
+            legend
+                margin-bottom: 5px
+                font-size: 17px
+                padding-left: 5px
+                color: #3f3f3f
+                font-weight: 600
+
+                span
+                    color: $Button-slider-active
+
+            .invalid-feedback
                 color: red
                 margin-top: 5px
+                width: 100%
+                text-align: left
 
             .is-invalid
                 border: .1vh solid red
 
-            input
+            input, select
                 width: calc(100% - 20px)
                 outline: none
                 background: #f0f0f0
                 border: .1vh solid $Button-slider-active
-                padding: 15px 10px
-                font-size: 18px
+                padding: 12px 10px
+                font-size: 16px
                 box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .2)
                 border-radius: 10px
                 transition: padding .5s, width .5s
 
                 &::placeholder
-                    font-size: 17px
+                    font-size: 16px
                     color: #999999
                     transition: opacity .5s
-                
-                &:focus 
+
+                &:focus
                     width: calc(100% - 30px)
-                    padding: 12px 10px
 
                     &::placeholder
                         opacity: 0
 
+            select
+                width: 100%
 
-
+            .has-value
+                width: calc(100% - 30px)
 
     &_settings
         width: 100%
@@ -201,7 +275,7 @@ body
 
                 &:hover
                     color: $Button-forgot-password
-        
+
         &-button
             margin-top: 20px
             border-radius: 10px
@@ -217,6 +291,19 @@ body
 
             &:hover
                 background: #333
+
+        &_changes-form
+            text-align: center
+            margin-top: 15px
+            color: #6e6e6e
+            cursor: pointer
+            transition: color .3s
+
+            &:hover
+                color: #525252
+
+            span
+                color: $Button-forgot-password
 
 // Slider styles
 .slider

@@ -1,6 +1,6 @@
 function showInputError(el) {
     const parent = el.parentElement;
-    
+
     if(parent.querySelector(".invalid-feedback")) return;
 
     const message = el.dataset.invalidMessage || "Invalid input";
@@ -23,7 +23,7 @@ function removeInputError(el) {
 function inputErrorTemplate(message) {
     return `
         <div class="invalid-feedback">
-            ${message}
+            <p>${message}</p>
         </div>
     `;
 }

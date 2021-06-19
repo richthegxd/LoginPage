@@ -16,7 +16,6 @@ function getClearResponse(res) {
 }
 
 function setToken(req) {
-    console.log(req);
     const isAuthUrl = req.url.includes("auth");
 
     if (!isAuthUrl) {

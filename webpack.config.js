@@ -1,11 +1,11 @@
-const path = require('path');
+const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
     context: path.resolve(__dirname, "src"),
-    mode: 'development',
+    mode: "development",
     // Entry files
     entry: {
         polyfill: "babel-polyfill",
@@ -14,7 +14,7 @@ module.exports = {
     // Live server settings
     devServer: {
         historyApiFallback: true,
-        contentBase: path.resolve(__dirname, './dist'),
+        contentBase: path.resolve(__dirname, "./dist"),
         open: true,
         compress: true,
         hot: true,
@@ -36,19 +36,23 @@ module.exports = {
             // Rules for styles
             {
                 test: /\.(scss|css|sass)$/,
-                use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "postcss-loader",
+                    "sass-loader",
+                ],
             },
             // Rules for images
             {
                 test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-                type: 'asset/resource',
+                type: "asset/resource",
             },
             // Rules for fonts and svg
             {
                 test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
-                type: 'asset/inline',
+                type: "asset/inline",
             },
-            
         ],
     },
     // Plugins
@@ -61,7 +65,7 @@ module.exports = {
     ],
     // Result file
     output: {
-        path: path.resolve(__dirname, './dist'),
-        filename: '[name].bundle.js',
-    }
-}
+        path: path.resolve(__dirname, "./dist"),
+        filename: "[name].bundle.js",
+    },
+};
