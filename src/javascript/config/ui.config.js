@@ -14,7 +14,7 @@ const UI = {
         first_name: document.querySelector("#first_name"),
         last_name: document.querySelector("#last_name"),
         phone: document.querySelector("#phone"),
-        gender: document.querySelector("#gender"),
+        gender: document.querySelector("#gender_orientation"),
         country: document.querySelector("#country"),
         city: document.querySelector("#city"),
         date_of_birth_day: document.querySelector("#date_of_birth_day"),

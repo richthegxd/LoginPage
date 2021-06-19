@@ -8,7 +8,7 @@ import { notify, removeNotify } from "./views/notification";
 import { focus } from "./helpers/focus";
 import "./helpers/change_form";
 import preloader from "./views/preloader";
-
+import { getValuesInput } from "./store/inputs";
 
 const {
     forms: { formLog, formReg },
@@ -82,10 +82,15 @@ async function onSubmit(inputs, cb) {
 
 async function loginRequest() {
     const data = getValuesInput(UI.inputsLogin);
-    try  {
-        await login(data);
-        notify({ message: "Login success!", className: "alert-success" });
-        formLog.reset();
+    try {
+        await login(data).then((res) => {
+            if (res.error) {
+                notify({ message: res.message, className: "alert-danger" });
+                return;
+            }
+            notify({ message: "Login success!", className: "alert-success" });
+            formLog.reset();
+        });
     } catch (error) {
         notify({ message: error, className: "alert-danger" });
     }
@@ -94,22 +99,17 @@ async function loginRequest() {
 async function registerRequest() {
     const data = getValuesInput(UI.inputsRegister);
     try {
-        await register(data);
-        notify({ message: "Register success!", className: "alert-success" });
-        formReg.reset();
+        await register(data).then((res) => {
+            if (res.error) {
+                notify({ message: res.message, className: "alert-danger" });
+                return;
+            }
+            notify({ message: "Register success!", className: "alert-success" });
+            formLog.reset();
+        });
     } catch (error) {
-        notify({ message: error, className: "alert-danger" });
+        notify({ message: error.message, className: "alert-danger" });
     }
-}
-
-function getValuesInput(inputs) {
-    const values = Object.values(inputs);
-    const data = values.reduce((acc, input) => {
-        acc[input.id] = input.value;
-        return acc;
-    }, {});
-    console.log(data)
-    return data;
 }
 
 function validateInputs(inputs) {

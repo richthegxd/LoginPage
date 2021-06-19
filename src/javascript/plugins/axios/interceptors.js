@@ -20,7 +20,7 @@ function setToken(req) {
 
     if (!isAuthUrl) {
         const token = localStorage.getItem(lsToketKey);
-        req.headers['x-access-token'] = token;
+        req.headers["x-access-token"] = token;
     }
 
     return req;

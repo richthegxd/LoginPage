@@ -1,11 +1,11 @@
 function showInputError(el) {
     const parent = el.parentElement;
 
-    if(parent.querySelector(".invalid-feedback")) return;
+    if (parent.querySelector(".invalid-feedback")) return;
 
-    const message = el.dataset.invalidMessage || "Invalid input";
+    const message = el.dataset.invalidMessage || "Please, check the correctness of the entered data!";
     const templateMessage = inputErrorTemplate(message);
-    
+
     el.classList.add("is-invalid");
 
     parent.insertAdjacentHTML("beforeend", templateMessage);
@@ -14,7 +14,7 @@ function showInputError(el) {
 function removeInputError(el) {
     const parent = el.parentElement;
     const err = parent.querySelector(".invalid-feedback");
-    if(!err) return;
+    if (!err) return;
 
     el.classList.remove("is-invalid");
     parent.removeChild(err);
