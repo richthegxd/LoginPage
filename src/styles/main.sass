@@ -19,7 +19,7 @@ body
 .autoComplete_wrapper
     width: 100% !important
 
-    .no_result 
+    .no_result
         width: 100% !important
         padding: 5px
 
@@ -38,6 +38,16 @@ body
 
 .d-none
     display: none
+
+    @keyframes open
+        0%
+            opacity: 0
+            transform: translateX(-10vh) perspective(400px) rotate(8deg) rotateY(-10deg)
+        50%
+            transform: translateX(2vh) perspective(400px) rotateY(3deg)
+        100%
+            opacity: 1
+            transform: translateX(0) perspective(400px) rotate(0deg) rotateY(0deg)
 
 .d-block
     display: block
@@ -250,18 +260,20 @@ body
                 margin-top: 5px
                 width: 100%
                 text-align: left
-
+                animation: feedback .5s
+                
+            @keyframes feedback
+                0%
+                    opacity: 0
+                    transform: translateX(-2vh)
+                100%
+                    opacity: 1
+                    transform: translateX(0vh)
+                    
             .is-invalid
                 border: .1vh solid red
                 animation: invalid .3s forwards
 
-                @keyframes invalid
-                    0%
-                        transform: scale(1)
-                    50%
-                        transform: scale(1.03)
-                    100%
-                        transform: scale(1)
 
             input, select
                 width: calc(100% - 20px)

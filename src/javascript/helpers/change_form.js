@@ -3,7 +3,8 @@ const registerForm = document.querySelector("#form_register");
 const openRegisterFormButton = document.querySelector(".open-register");
 const openLoginFormButton = document.querySelector(".open-login");
 
-function open(openForm, closeForm) {
+function open(openForm, closeForm, duration) {
+    openForm.style.animation = `open ${duration}s forwards`;
     openForm.classList.toggle("d-block");
     openForm.classList.toggle("d-none");
 
@@ -12,9 +13,9 @@ function open(openForm, closeForm) {
 }
 
 openRegisterFormButton.addEventListener("click", () => {
-    open(registerForm, loginForm);
+    open(registerForm, loginForm, 0.6);
 });
 
 openLoginFormButton.addEventListener("click", () => {
-    open(loginForm, registerForm);
+    open(loginForm, registerForm, 0.6);
 });
