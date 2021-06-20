@@ -9,7 +9,10 @@ class Preloader {
     }
 
     renderPreloader() {
-        this.createContainer();
+        if (!this.preloaderContainer) {
+            this.createContainer();
+        }
+
         const preloader = Preloader.preloaderTemplate();
         this.container.insertAdjacentHTML("afterbegin", preloader);
     }

@@ -8,7 +8,12 @@ function showInputError(el) {
 
     el.classList.add("is-invalid");
 
-    parent.insertAdjacentHTML("beforeend", templateMessage);
+    if(el.id === "phone") {
+        parent.insertAdjacentHTML("afterend", templateMessage);
+    } else {
+        parent.insertAdjacentHTML("beforeend", templateMessage);
+    }
+    
 }
 
 function removeInputError(el) {

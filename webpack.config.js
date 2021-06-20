@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     context: path.resolve(__dirname, "src"),
@@ -37,10 +38,18 @@ module.exports = {
             {
                 test: /\.(scss|css|sass)$/,
                 use: [
-                    "style-loader",
-                    "css-loader",
-                    "postcss-loader",
-                    "sass-loader",
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                    },
+                    {
+                        loader: "css-loader"
+                    },
+                    {
+                        loader: "postcss-loader"
+                    },
+                    { 
+                        loader: "sass-loader"
+                    }
                 ],
             },
             // Rules for images
@@ -59,6 +68,9 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new CleanWebpackPlugin(),
+        new MiniCssExtractPlugin({
+            filename: "./main.css",
+        }),
         new HtmlWebpackPlugin({
             template: "index.html",
         }),

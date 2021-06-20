@@ -25,4 +25,15 @@ async function register(data) {
     }
 }
 
+async function locations() {
+    try {
+        const res = await axios.get("/location/get-countries")
+
+        return Promise.resolve(res);
+    } catch (error) {
+        return Promise.reject(error);
+    }
+}
+
+
 export { login, register };

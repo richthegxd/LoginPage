@@ -9,6 +9,29 @@ body
     font-size: 16px
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 
+// Plugins style
+.iti
+    width: 100%
+
+    #phone
+        width: 100%
+
+.autoComplete_wrapper
+    width: 100% !important
+
+    .no_result 
+        width: 100% !important
+        padding: 5px
+
+    input
+        width: 100% !important
+        color: #000 !important
+
+        &:hover::placeholder
+            color: #999999 !important
+
+// General styles
+
 .page_wrapper
     display: flex
     flex-flow: row wrap
@@ -29,7 +52,6 @@ body
 ::-webkit-scrollbar
     width: .5vh
     height: 0px
-    
 
 // Preloader styles
 .preloader-container
@@ -250,17 +272,18 @@ body
                 font-size: 16px
                 box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .2)
                 border-radius: 10px
-                transition: padding .5s, width .5s
+                transition: width .3s
 
                 &::placeholder
                     font-size: 16px
                     color: #999999
-                    transition: opacity .5s
+                    transition: opacity .3s, padding .3s
 
                 &:focus
-                    width: calc(100% - 30px)
+                    border: .1vh solid $Focus-border
 
                     &::placeholder
+                        padding: 0.1rem 0.6rem
                         opacity: 0
 
             select
@@ -268,6 +291,7 @@ body
 
             .has-value
                 width: calc(100% - 30px)
+                border: .1vh solid $Focus-border
 
     &_settings
         width: 100%
