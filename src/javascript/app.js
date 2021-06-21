@@ -12,6 +12,7 @@ import { getValuesInput } from "./store/inputs";
 import "./plugins/phone/phone_mask";
 import locations from "./store/locations";
 import instanceAutocomplete from "./plugins/autocomplete/index";
+import checkLength from "./helpers/input_number";
 
 document.addEventListener("DOMContentLoaded", async () => {
     // Events
@@ -89,6 +90,10 @@ function eventsInputs(input) {
 
     input.addEventListener("blur", () => {
         focus(input, "has-value");
+    });
+
+    input.addEventListener("input", () => {
+        checkLength(input);
     });
 }
 

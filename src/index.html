@@ -109,6 +109,7 @@
                                             id="password"
                                             data-required="password"
                                             placeholder="Your password here"
+                                            data-invalid-message="Only letters, numbers, and common punctuation characters are allowed"
                                         />
                                     </fieldset>
                                 </div>
@@ -174,6 +175,7 @@
                                             id="password"
                                             data-required="password"
                                             placeholder="Your password here"
+                                            data-invalid-message="Only letters, numbers, and common punctuation characters are allowed"
                                         />
                                     </fieldset>
                                     <fieldset>
@@ -185,6 +187,7 @@
                                             id="nickname"
                                             data-required="nickname"
                                             placeholder="Your nickname here"
+                                            data-invalid-message="The user name can include Latin letters (a-z), numbers (0-9), and a period (.)"
                                         />
                                     </fieldset>
                                     <fieldset class="row">
@@ -221,14 +224,20 @@
                                             type="tel"
                                             id="phone"
                                             data-required="phone_number"
+                                            data-invalid-message="Unknown format. Make sure that the country and phone number are correct."
                                         />
                                     </fieldset>
                                     <fieldset>
                                         <legend>
                                             Choose your <span>gender</span>
                                         </legend>
-                                        <select id="gender_orientation" name="gender">
-                                            <option selected value="male">Male</option>
+                                        <select
+                                            id="gender_orientation"
+                                            name="gender"
+                                        >
+                                            <option selected value="male">
+                                                Male
+                                            </option>
                                             <option value="female">
                                                 Female
                                             </option>
@@ -268,23 +277,35 @@
                                             <input
                                                 type="number"
                                                 id="date_of_birth_day"
-                                                data-required="password"
+                                                data-required="date"
                                                 placeholder="Day"
+                                                data-maxlength="2"
                                             />
                                         </div>
                                         <div>
-                                            <input
-                                                type="number"
-                                                id="date_of_birth_month"
-                                                data-required="password"
-                                                placeholder="Month"
-                                            />
+                                            <select id="date_of_birth_month">
+                                                <option selected disabled>Month</option>
+                                                <option value="1">January</option>
+                                                <option value="2">February</option>
+                                                <option value="3">March</option>
+                                                <option value="4">April</option>
+                                                <option value="5">May</option>
+                                                <option value="6">June</option>
+                                                <option value="7">July</option>
+                                                <option value="8">August</option>
+                                                <option value="9">September</option>
+                                                <option value="10">October</option>
+                                                <option value="11">November</option>
+                                                <option value="12">December</option>
+                                              </select>
                                         </div>
                                         <div>
                                             <input
                                                 type="number"
                                                 id="date_of_birth_year"
+                                                data-required="date"
                                                 placeholder="Year"
+                                                data-maxlength="4"
                                             />
                                         </div>
                                     </fieldset>

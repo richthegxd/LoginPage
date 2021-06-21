@@ -1,19 +1,22 @@
 function showInputError(el) {
+    scrollToElement(el);
+
     const parent = el.parentElement;
 
     if (parent.querySelector(".invalid-feedback")) return;
 
-    const message = el.dataset.invalidMessage || "Please, check the correctness of the entered data!";
+    const message =
+        el.dataset.invalidMessage ||
+        "Please, check the correctness of the entered data!";
     const templateMessage = inputErrorTemplate(message);
 
     el.classList.add("is-invalid");
 
-    if(el.id === "phone") {
+    if (el.id === "phone") {
         parent.insertAdjacentHTML("afterend", templateMessage);
     } else {
         parent.insertAdjacentHTML("beforeend", templateMessage);
     }
-    
 }
 
 function removeInputError(el) {
@@ -23,6 +26,10 @@ function removeInputError(el) {
 
     el.classList.remove("is-invalid");
     parent.removeChild(err);
+}
+
+function scrollToElement(el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function inputErrorTemplate(message) {
